@@ -1,4 +1,4 @@
-(function(root){
+(function (root) {
   var  _keys = [];
   var CHANGE_EVENT = "change";
   root.KeyStore = $.extend({}, EventEmitter.prototype);
@@ -33,6 +33,12 @@
         _keys.splice(idx, 1);
         KeyStore.changed();
         break;
+
+      case KeyConstants.KEYS_ASSIGNED:
+        _keys = payload.noteArray;
+        KeyStore.changed();
+        break;
+
     }
   });
 
