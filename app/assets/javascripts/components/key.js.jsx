@@ -1,36 +1,29 @@
 var Key = React.createClass({
+  getInitialState: function () {
+    return { note: new Note(window.TONES[this.props.noteName]) };
+  },
+
   componentDidMount: function () {
     KeyStore.addChangeHandler(this.keyChange);
-    this.note = new Note(window.TONES[this.props.noteName]);
   },
 
   componentWillUnmount: function () {
     KeyStore.removeChangeHandler(this.keyChange);
   },
 
-  keyPress: function () {
-    this.note.start();
-  },
-
-  keyRelease: function () {
-    this.note.stop();
-  },
-
-  keyChange: function () {
-    if (this.note.state()) {
-      this.keyRelease();
+  keyChange: function (event) {
+    if (KeyStore.all().indexOf(this.props.noteName) !== -1) {
+      this.state.note.start();
     } else {
-      this.keyPress();
+      this.state.note.stop();
     }
-    // this.note.state() ? this.keyRelease() : this.keyPress();
   },
 
   render: function () {
     return (
-      <div onChange={this.keyChange}></div>
+      <div></div>
     );
 
   }
-
 
 });
