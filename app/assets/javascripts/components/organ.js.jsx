@@ -1,4 +1,4 @@
-Organ = React.createClass({
+var Organ = React.createClass({
 
   render: function(){
     var keys = Object.keys(window.TONES);
@@ -7,7 +7,6 @@ Organ = React.createClass({
       <div>
         {keys.map(function (key) {
           return <div><Key noteName={key}/>
-            {key}
           </div>;
           })
         }
