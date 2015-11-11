@@ -1,19 +1,19 @@
 (function (root) {
   var  _keys = [];
-  var CHANGE_EVENT = "change";
+  
   root.KeyStore = $.extend({}, EventEmitter.prototype);
   root.KeyStore.setMaxListeners(25);
 
   KeyStore.addChangeHandler = function (callback) {
-    this.on(CHANGE_EVENT, callback);
+    this.on(KeyConstants.CHANGE_EVENT, callback);
   };
 
   KeyStore.removeChangeHandler = function (callback) {
-    this.removeListener(CHANGE_EVENT, callback);
+    this.removeListener(KeyConstants.CHANGE_EVENT, callback);
   };
 
   KeyStore.changed = function () {
-    this.emit(CHANGE_EVENT);
+    this.emit(KeyConstants.CHANGE_EVENT);
   };
 
   KeyStore.all = function () {

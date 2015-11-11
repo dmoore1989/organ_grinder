@@ -1,6 +1,6 @@
 (function (root) {
   var _tracks = [];
-  var CHANGE_EVENT = "change";
+
   root.TrackStore = $.extend({}, EventEmitter.prototype);
   root.TrackStore.setMaxListeners(25);
 
@@ -20,15 +20,15 @@
   };
 
   TrackStore.addChangeHandler = function (callback) {
-    this.on(CHANGE_EVENT, callback);
+    this.on(KeyConstants.CHANGE_EVENT, callback);
   };
 
   TrackStore.removeChangeHandler = function (callback) {
-    this.removeListener(CHANGE_EVENT, callback);
+    this.removeListener(KeyConstants.CHANGE_EVENT, callback);
   };
 
   TrackStore.changed = function () {
-    this.emit(CHANGE_EVENT);
+    this.emit(KeyConstants.CHANGE_EVENT);
   };
 
 })(this);
