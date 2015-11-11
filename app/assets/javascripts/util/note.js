@@ -33,4 +33,12 @@
     this.gainNode.gain.value = 0;
   };
 
+  Note.prototype.state = function () {
+    if (this.gainNode.gain.value === 0) {
+      return false;
+    }
+    
+    return true;
+  };
+
 })();

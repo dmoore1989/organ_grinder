@@ -20,10 +20,16 @@
   };
 
   KeyStore.dispatcherId = AppDispatcher.register(function (payload) {
-    switch (payload.eventType) {
+
+    switch (payload.actionType) {
       case KeyConstants.KEY_PRESSED:
         _keys.push(payload.noteName);
         KeyStore.changed();
+        break;
+      case KeyConstants.KEY_RELEASED:
+        var idx = _keys.indexOf(payload.noteName);
+        _keys.splice(idx, 1);
+        break;
     }
   });
 
